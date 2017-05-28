@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,9 +15,19 @@ public class GuitarsController {
 		System.out.println("test");
 
 		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("name", "한민웅");
 		
-		System.out.println("한민웅");
+		
+		ArrayList<String> list = new ArrayList<String>();
+
+		list.add("test");
+		list.add("test1");
+		list.add("test2");
+		list.add("test3");
+		list.add("test4");
+		
+		
+		mv.addObject("name", "한민웅");
+		mv.addObject("list", list);
 		
 		return mv;
 	}
