@@ -3,15 +3,15 @@
 
 <section id="search">
 <div class="container">
-	<form>
+	<form action="/search" method="GET">
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">Email address</label>
 	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
 	  </div>
 	  <div class="row">
 		  <div class="form-group col-6">
-		    <label for="buider">buider</label>
-		    <select class="form-control" id="exampleSelect1">
+		    <label for="buider">builder</label>
+		    <select class="form-control" id="exampleSelect1" name="builder">
 		      <option>FENDER</option>
 		      <option>MARTIN</option>
 		      <option>GIBSON</option>
@@ -24,7 +24,7 @@
 		  </div>
 		  <div class="form-group col-6">
 		    <label for="model">type</label>
-		    <select class="form-control" id="exampleSelect1">
+		    <select class="form-control" id="exampleSelect1" name="type">
 		      <option>ACOUSTIC</option>
 		      <option>ELECTRIC</option>
 		    </select>
@@ -33,7 +33,7 @@
 	  <div class="row">
 		  <div class="form-group col-6">
 		    <label for="element">topWood</label>
-		    <select class="form-control" id="exampleSelect1">
+		    <select class="form-control" id="exampleSelect1" name="topWood">
 		      <option>INDIAN_ROSEWOOD</option>
 		      <option>BRAZILIAN_ROSEWOOD</option>
 		      <option>MAHOGANY</option>
@@ -47,7 +47,7 @@
 		  </div>
 		  <div class="form-group col-6">
 		    <label for="element">backWood</label>
-		    <select class="form-control" id="exampleSelect1">
+		    <select class="form-control" id="exampleSelect1" name="backWood">
 		      <option>INDIAN_ROSEWOOD</option>
 		      <option>BRAZILIAN_ROSEWOOD</option>
 		      <option>MAHOGANY</option>
