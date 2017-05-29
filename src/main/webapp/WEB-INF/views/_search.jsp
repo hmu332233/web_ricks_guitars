@@ -12,21 +12,22 @@
 		  <div class="form-group col-6">
 		    <label for="buider">builder</label>
 		    <select class="form-control" id="exampleSelect1" name="builder">
-		      <option>FENDER</option>
-		      <option>MARTIN</option>
-		      <option>GIBSON</option>
-		      <option>COLLINGS</option>
-		      <option>OLSON</option>
-		      <option>RYAN</option>
+		      <option>Fender</option>
+		      <option>Martin</option>
+		      <option>Gibson</option>
+		      <option>Collings</option>
+		      <option>Olson</option>
+		      <option>Ryan</option>
 		      <option>PRS</option>
-		      <option>ANY</option>
+		      <option>Unspecified</option>
 		    </select>
 		  </div>
 		  <div class="form-group col-6">
 		    <label for="model">type</label>
 		    <select class="form-control" id="exampleSelect1" name="type">
-		      <option>ACOUSTIC</option>
-		      <option>ELECTRIC</option>
+		      <option>acoustic</option>
+		      <option>electric</option>
+		      <option>unspecified</option>
 		    </select>
 		  </div>
 	  </div>
@@ -34,29 +35,29 @@
 		  <div class="form-group col-6">
 		    <label for="element">topWood</label>
 		    <select class="form-control" id="exampleSelect1" name="topWood">
-		      <option>INDIAN_ROSEWOOD</option>
-		      <option>BRAZILIAN_ROSEWOOD</option>
-		      <option>MAHOGANY</option>
-		      <option>MAPLE</option>
-		      <option>COCOBOLO</option>
-		      <option>CEDAR</option>
-		      <option>ADIRONDACK</option>
-		      <option>ALDER</option>
-		      <option>SITKA</option>
+		      <option>Indian Rosewood</option>
+		      <option>Brazilian Rosewood</option>
+		      <option>Mahogany</option>
+		      <option>Maple</option>
+		      <option>Cocobolo</option>
+		      <option>Cedar</option>
+		      <option>Adirondack</option>
+		      <option>Alder</option>
+		      <option>Sitka</option>
 		    </select>
 		  </div>
 		  <div class="form-group col-6">
 		    <label for="element">backWood</label>
 		    <select class="form-control" id="exampleSelect1" name="backWood">
-		      <option>INDIAN_ROSEWOOD</option>
-		      <option>BRAZILIAN_ROSEWOOD</option>
-		      <option>MAHOGANY</option>
-		      <option>MAPLE</option>
-		      <option>COCOBOLO</option>
-		      <option>CEDAR</option>
-		      <option>ADIRONDACK</option>
-		      <option>ALDER</option>
-		      <option>SITKA</option>
+		      <option>Indian Rosewood</option>
+		      <option>Brazilian Rosewood</option>
+		      <option>Mahogany</option>
+		      <option>Maple</option>
+		      <option>Cocobolo</option>
+		      <option>Cedar</option>
+		      <option>Adirondack</option>
+		      <option>Alder</option>
+		      <option>Sitka</option>
 		    </select>
 		  </div>
 	  </div>
