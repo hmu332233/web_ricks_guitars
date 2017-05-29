@@ -12,14 +12,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   </head>
   <body>
-	  
-	<jsp:include page="_nav.jsp"/>
-  
-    <h1>Hello, world! 테스트</h1>
-    <p>${name}</p>
+		
+		<!-- nav section -->	  
+		<jsp:include page="_nav.jsp"/>
+		
+		<!-- search section -->
+		<jsp:include page="_search.jsp"/>
     
    	<!-- card section -->
-	<jsp:include page="_card.jsp" flush="false"/>
+		<jsp:include page="_card.jsp" flush="false"/>
     
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
