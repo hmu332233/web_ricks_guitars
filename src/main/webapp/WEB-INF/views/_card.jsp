@@ -129,16 +129,16 @@ h5 {
 				<div class="card">
 					<!--  <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif"> -->
 					<div class="card-block">
-						<h4 class="card-title mt-3">Tawshif Ahsan Khan</h4>
+						<h4 class="card-title mt-3">F-5G</h4>
 						<div class="meta">
-							<a>Friends</a>
+							<a>Guitar</a>
 						</div>
 						<div class="card-text">
 							 Tawshif is a web designer living in Bangladesh.
 						</div>
 					</div>
 					<div class="card-footer">
-						<small>Last updated 3 mins ago</small>
+						<small>1234.45</small>
 						<button class="btn btn-secondary float-right btn-sm">show</button>
 					</div>
 				</div>
