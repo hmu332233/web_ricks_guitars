@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class GuitarsController {
+public class InstrumentsController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView home() {
