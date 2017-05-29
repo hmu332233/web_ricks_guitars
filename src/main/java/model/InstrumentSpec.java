@@ -35,4 +35,17 @@ public class InstrumentSpec {
     }
     return true;
   }
+
+
+  public void printProperties() {
+	
+	for (Iterator i = properties.keySet().iterator(); i.hasNext(); ) {
+	      String propertyName = (String)i.next();
+	      
+	      System.out.println(propertyName + " : " + properties.get(propertyName));
+	}
+  }
+  
+  
+  
 }

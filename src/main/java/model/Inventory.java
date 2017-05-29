@@ -37,4 +37,15 @@ public class Inventory {
     }
     return matchingInstruments;
   }
+  
+
+
+	public void printAllInstruments() {
+	  for(Instrument instrument :  (LinkedList<Instrument>)inventory ){
+		  instrument.printProperties();
+		  System.out.println("");
+	  }
+	}
+	
+	
 }

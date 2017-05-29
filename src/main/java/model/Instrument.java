@@ -27,4 +27,14 @@ public class Instrument {
   public InstrumentSpec getSpec() {
     return spec;
   }  
+  
+  @Override
+  public String toString() {
+	return "Instrument [serialNumber=" + serialNumber + ", price=" + price + "]";
+  }
+
+  public void printProperties(){
+	  System.out.println(toString());
+	  spec.printProperties();
+  }
 }
