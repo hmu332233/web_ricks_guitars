@@ -27,6 +27,10 @@ public class Inventory {
     }
     return null;
   }
+  
+  public List getAllInstruments(){
+	  return inventory;
+  }
 
   public List search(InstrumentSpec searchSpec) {
     List matchingInstruments = new LinkedList();

@@ -1,40 +1,43 @@
 package model;
 
 public class Instrument {
- 
-  private String serialNumber;
-  private double price;
-  private InstrumentSpec spec;
 
-  public Instrument(String serialNumber, double price, InstrumentSpec spec) {
-    this.serialNumber = serialNumber;
-    this.price = price;
-    this.spec = spec;
-  }
+	private String serialNumber;
+	private double price;
+	private InstrumentSpec spec;
 
-  public String getSerialNumber() {
-    return serialNumber;
-  }
+	public Instrument(String serialNumber, double price, InstrumentSpec spec) {
+		this.serialNumber = serialNumber;
+		this.price = price;
+		this.spec = spec;
+	}
 
-  public double getPrice() {
-    return price;
-  }
+	public String getSerialNumber() {
+		return serialNumber;
+	}
 
-  public void setPrice(float newPrice) {
-    this.price = newPrice;
-  }
+	public double getPrice() {
+		return price;
+	}
 
-  public InstrumentSpec getSpec() {
-    return spec;
-  }  
-  
-  @Override
-  public String toString() {
-	return "Instrument [serialNumber=" + serialNumber + ", price=" + price + "]";
-  }
+	public void setPrice(float newPrice) {
+		this.price = newPrice;
+	}
 
-  public void printProperties(){
-	  System.out.println(toString());
-	  spec.printProperties();
-  }
+	public InstrumentSpec getSpec() {
+		return spec;
+	}
+
+	@Override
+	public String toString() {
+
+		String result = "Instrument [serialNumber=" + serialNumber + ", price=" + price + "]\n";
+		result += spec.toString();
+
+		return result;
+	}
+
+	public void printProperties() {
+		System.out.println(toString());
+	}
 }

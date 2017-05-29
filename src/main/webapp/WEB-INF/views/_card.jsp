@@ -124,21 +124,20 @@ h5 {
 	<div class="container">
 		<div class="row">
 			
-			<c:forEach var="aaa" items="${list}">
+			<c:forEach var="instrument" items="${instruments}">
 			<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
 				<div class="card">
-					<!--  <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif"> -->
 					<div class="card-block">
-						<h4 class="card-title mt-3">F-5G</h4>
+						<h4 class="card-title mt-3">${instrument.getSpec().getProperty("model")}</h4>
 						<div class="meta">
-							<a>Guitar</a>
+							<a>$ ${instrument.price}</a>
 						</div>
 						<div class="card-text">
-							 Tawshif is a web designer living in Bangladesh.
+							 ${ instrument.getSpec().toHTML()}
 						</div>
 					</div>
 					<div class="card-footer">
-						<small>1234.45</small>
+						<small>얍얍얍</small>
 						<button class="btn btn-secondary float-right btn-sm">show</button>
 					</div>
 				</div>
