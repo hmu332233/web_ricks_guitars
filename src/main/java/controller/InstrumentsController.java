@@ -50,10 +50,16 @@ public class InstrumentsController {
 		List<Instrument> instruments = inventory.getAllInstruments();
 		
 	    Map properties = new HashMap();
-	    properties.put("builder", builder);
-	    properties.put("type", type);
-//	    properties.put("topWood", topWood);
-	    properties.put("backWood", backWood);
+	    
+	    if( !builder.equals("Unspecified") )
+	    	properties.put("builder", builder);
+	    if( !type.equals("Unspecified") )
+	    	properties.put("type", type);
+	    if( !topWood.equals("Unspecified") )
+	    	properties.put("topWood", topWood);
+	    if( !backWood.equals("Unspecified") )
+	    	properties.put("backWood", backWood);
+	    
 	    InstrumentSpec whatBryanLikes = new InstrumentSpec(properties);
 	    List matchingInstruments = inventory.search(whatBryanLikes);
 	    
