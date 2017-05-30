@@ -16,7 +16,6 @@
 		<!-- nav section -->
 		<jsp:include page="_nav.jsp"/>
 		
-		
 		<!-- search section -->
 		<div class="mt-5 mb-3">
 		<jsp:include page="_search.jsp"/>
