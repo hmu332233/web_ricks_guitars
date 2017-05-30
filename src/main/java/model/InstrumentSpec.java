@@ -27,7 +27,7 @@ public class InstrumentSpec {
 	public boolean matches(InstrumentSpec otherSpec) {
 		for (Iterator i = otherSpec.getProperties().keySet().iterator(); i.hasNext();) {
 			String propertyName = (String) i.next();
-			if (!properties.get(propertyName).equals(otherSpec.getProperty(propertyName))) {
+			if (!properties.get(propertyName).toString().equals(otherSpec.getProperty(propertyName).toString())) {
 				return false;
 			}
 		}

@@ -1,7 +1,9 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.InstrumentDAO;
-import model.*;
+import model.Builder;
+import model.Instrument;
+import model.InstrumentSpec;
+import model.Inventory;
+import model.Wood;
 
 @Controller
 public class InstrumentsController {
@@ -40,15 +46,20 @@ public class InstrumentsController {
 		System.out.println(backWood);
 		
 		Inventory inventory = new InstrumentDAO().selectAll();
+//		inventory.printAllInstruments();
 		List<Instrument> instruments = inventory.getAllInstruments();
 		
-		HashMap properties = new HashMap();
-		properties.put("builder", builder);
+	    Map properties = new HashMap();
+	    properties.put("builder", builder);
 	    properties.put("type", type);
-	    properties.put("topWood", topWood);
+//	    properties.put("topWood", topWood);
 	    properties.put("backWood", backWood);
 	    InstrumentSpec whatBryanLikes = new InstrumentSpec(properties);
 	    List matchingInstruments = inventory.search(whatBryanLikes);
+	    
+	    for( Instrument instrument : (LinkedList<Instrument>)matchingInstruments ){
+	    	instrument.printProperties();
+	    }
 		
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("instruments", matchingInstruments);
