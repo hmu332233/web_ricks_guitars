@@ -6,17 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.InstrumentDAO;
-import model.Builder;
 import model.Instrument;
 import model.InstrumentSpec;
 import model.Inventory;
-import model.Wood;
 
 @Controller
 public class InstrumentsController {
@@ -34,16 +33,16 @@ public class InstrumentsController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@RequestMapping(value = "/instruments/search", method = RequestMethod.GET)
 	public ModelAndView search(	@RequestParam(value = "builder") String builder,
 								@RequestParam(value = "type") String type,
 								@RequestParam(value = "topWood") String topWood,
 								@RequestParam(value = "backWood") String backWood) {
 		
-		System.out.println(builder);
-		System.out.println(type);
-		System.out.println(topWood);
-		System.out.println(backWood);
+//		System.out.println(builder);
+//		System.out.println(type);
+//		System.out.println(topWood);
+//		System.out.println(backWood);
 		
 		Inventory inventory = new InstrumentDAO().selectAll();
 //		inventory.printAllInstruments();
@@ -73,6 +72,47 @@ public class InstrumentsController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/instruments/{id}/edit", method = RequestMethod.GET)
+	public ModelAndView viewEditPage(@PathVariable(value = "id") String id) {
+		
+		System.out.println(id);
+		
+		ModelAndView mv = new ModelAndView("edit");
+		return mv;
+	}
 	
-
+	@RequestMapping(value = "/instruments/new", method = RequestMethod.GET)
+	public String viewNewPage() {
+		return "new";
+	}
+	
+	@RequestMapping(value = "/instruments", method = RequestMethod.POST)
+	public ModelAndView processAddInstrument(	@RequestParam(value = "builder") String builder,
+								@RequestParam(value = "type") String type,
+								@RequestParam(value = "topWood") String topWood,
+								@RequestParam(value = "backWood") String backWood) {
+		
+		ModelAndView mv = new ModelAndView("index");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/instruments/{id}", method = RequestMethod.PUT)
+	public ModelAndView processEditInstrument(	@RequestParam(value = "builder") String builder,
+								@RequestParam(value = "type") String type,
+								@RequestParam(value = "topWood") String topWood,
+								@RequestParam(value = "backWood") String backWood) {
+		
+		ModelAndView mv = new ModelAndView("index");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/instruments/{id}", method = RequestMethod.DELETE)
+	public ModelAndView processDeleteInstrument(	@RequestParam(value = "builder") String builder,
+								@RequestParam(value = "type") String type,
+								@RequestParam(value = "topWood") String topWood,
+								@RequestParam(value = "backWood") String backWood) {
+		
+		ModelAndView mv = new ModelAndView("index");
+		return mv;
+	}
 }
