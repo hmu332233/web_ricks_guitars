@@ -18,7 +18,10 @@
 		
 		<!-- search section -->
 		<div class="mt-5 mb-3">
-		<jsp:include page="_search.jsp"/>
+		<jsp:include page="_form.jsp" flush="false">
+			<jsp:param name="action" value="/instruments" />
+			<jsp:param name="method" value="POST"/>
+		</jsp:include>
 		</div>
     
     <!-- jQuery first, then Tether, then Bootstrap JS. -->

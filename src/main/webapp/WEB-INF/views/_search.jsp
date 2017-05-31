@@ -3,7 +3,7 @@
 
 <section id="search">
 	<div class="container">
-		<form action="/search" method="GET">
+		<form action="/instruments/search" method="GET">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label> <input
 					type="email" class="form-control" id="exampleInputEmail1"

@@ -40,6 +40,17 @@
   </filter-mapping>  
   <!-- Encoding Filter For Hangul -->
   
+  <!-- PUT, DELETE filter 추가 -->
+  <filter>
+	  <filter-name>hiddenHttpMethodFilter</filter-name>
+	  <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+  </filter>
+  <filter-mapping>
+	  <filter-name>hiddenHttpMethodFilter</filter-name>
+	  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+	<!-- PUT, DELETE filter 추가 -->
+  
   	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>

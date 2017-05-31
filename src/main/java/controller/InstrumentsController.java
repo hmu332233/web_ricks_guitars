@@ -20,18 +20,6 @@ import model.Inventory;
 @Controller
 public class InstrumentsController {
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView index() {
-		
-		Inventory inventory = new InstrumentDAO().selectAll();
-//		inventory.printAllInstruments();
-		List<Instrument> instruments = inventory.getAllInstruments();
-		
-		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("instruments", instruments);
-		
-		return mv;
-	}
 	
 	@RequestMapping(value = "/instruments/search", method = RequestMethod.GET)
 	public ModelAndView search(	@RequestParam(value = "builder") String builder,
@@ -72,10 +60,23 @@ public class InstrumentsController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/instruments/{id}/edit", method = RequestMethod.GET)
-	public ModelAndView viewEditPage(@PathVariable(value = "id") String id) {
+	@RequestMapping(value = "/instruments", method = RequestMethod.GET)
+	public ModelAndView viewIndexPage() {
 		
-		System.out.println(id);
+		Inventory inventory = new InstrumentDAO().selectAll();
+//		inventory.printAllInstruments();
+		List<Instrument> instruments = inventory.getAllInstruments();
+		
+		ModelAndView mv = new ModelAndView("index");
+		mv.addObject("instruments", instruments);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/instruments/{serialNumber}/edit", method = RequestMethod.GET)
+	public ModelAndView viewEditPage(@PathVariable(value = "serialNumber") String serialNumber) {
+		
+		System.out.println(serialNumber);
 		
 		ModelAndView mv = new ModelAndView("edit");
 		return mv;
@@ -92,25 +93,25 @@ public class InstrumentsController {
 								@RequestParam(value = "topWood") String topWood,
 								@RequestParam(value = "backWood") String backWood) {
 		
-		ModelAndView mv = new ModelAndView("index");
-		return mv;
-	}
-	
-	@RequestMapping(value = "/instruments/{id}", method = RequestMethod.PUT)
-	public ModelAndView processEditInstrument(	@RequestParam(value = "builder") String builder,
-								@RequestParam(value = "type") String type,
-								@RequestParam(value = "topWood") String topWood,
-								@RequestParam(value = "backWood") String backWood) {
+		System.out.println("생성되었습니다");
 		
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
 	}
 	
-	@RequestMapping(value = "/instruments/{id}", method = RequestMethod.DELETE)
-	public ModelAndView processDeleteInstrument(	@RequestParam(value = "builder") String builder,
-								@RequestParam(value = "type") String type,
-								@RequestParam(value = "topWood") String topWood,
-								@RequestParam(value = "backWood") String backWood) {
+	@RequestMapping(value = "/instruments/{serialNumber}", method = RequestMethod.PUT)
+	public ModelAndView processEditInstrument(	@PathVariable(value = "serialNumber") String serialNumber) {
+		
+		System.out.println(serialNumber + "가 수정되었습니다");
+		
+		ModelAndView mv = new ModelAndView("index");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/instruments/{serialNumber}", method = RequestMethod.DELETE)
+	public ModelAndView processDeleteInstrument(@PathVariable(value = "serialNumber") String serialNumber) {
+		
+		System.out.println(serialNumber + "가 삭제되었습니다");
 		
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
