@@ -100,20 +100,18 @@ public class InstrumentsController {
 	}
 	
 	@RequestMapping(value = "/instruments/{serialNumber}", method = RequestMethod.PUT)
-	public ModelAndView processEditInstrument(	@PathVariable(value = "serialNumber") String serialNumber) {
+	public String processEditInstrument(	@PathVariable(value = "serialNumber") String serialNumber) {
 		
 		System.out.println(serialNumber + "가 수정되었습니다");
 		
-		ModelAndView mv = new ModelAndView("index");
-		return mv;
+		return "redirect:/instruments";
 	}
 	
 	@RequestMapping(value = "/instruments/{serialNumber}", method = RequestMethod.DELETE)
-	public ModelAndView processDeleteInstrument(@PathVariable(value = "serialNumber") String serialNumber) {
+	public String processDeleteInstrument(@PathVariable(value = "serialNumber") String serialNumber) {
 		
 		System.out.println(serialNumber + "가 삭제되었습니다");
 		
-		ModelAndView mv = new ModelAndView("index");
-		return mv;
+		return "redirect:/instruments";
 	}
 }
