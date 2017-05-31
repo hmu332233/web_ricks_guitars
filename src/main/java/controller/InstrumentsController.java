@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,16 +28,14 @@ public class InstrumentsController {
 								@RequestParam(value = "type") String type,
 								@RequestParam(value = "topWood") String topWood,
 								@RequestParam(value = "backWood") String backWood) {
-		
-//		System.out.println(builder);
-//		System.out.println(type);
-//		System.out.println(topWood);
-//		System.out.println(backWood);
+				
+		System.out.println(builder);
+		System.out.println(type);
+		System.out.println(topWood);
+		System.out.println(backWood);
 		
 		Inventory inventory = new InstrumentDAO().selectAll();
-//		inventory.printAllInstruments();
-		List<Instrument> instruments = inventory.getAllInstruments();
-		
+
 	    Map properties = new HashMap();
 	    
 	    if( !builder.equals("Unspecified") )
@@ -50,11 +50,11 @@ public class InstrumentsController {
 	    InstrumentSpec whatBryanLikes = new InstrumentSpec(properties);
 	    List matchingInstruments = inventory.search(whatBryanLikes);
 	    
-	    for( Instrument instrument : (LinkedList<Instrument>)matchingInstruments ){
-	    	instrument.printProperties();
-	    }
+//	    for( Instrument instrument : (LinkedList<Instrument>)matchingInstruments ){
+//	    	instrument.printProperties();
+//	    }
 		
-		ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("search");
 		mv.addObject("instruments", matchingInstruments);
 		
 		return mv;
@@ -101,7 +101,7 @@ public class InstrumentsController {
 	
 	@RequestMapping(value = "/instruments/{serialNumber}", method = RequestMethod.PUT)
 	public String processEditInstrument(	@PathVariable(value = "serialNumber") String serialNumber) {
-		
+
 		System.out.println(serialNumber + "가 수정되었습니다");
 		
 		return "redirect:/instruments";
