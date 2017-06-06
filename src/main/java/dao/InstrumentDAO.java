@@ -1,9 +1,11 @@
 package dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import model.Builder;
+import model.Instrument;
 import model.InstrumentSpec;
 import model.InstrumentType;
 import model.Inventory;
@@ -67,6 +69,47 @@ public class InstrumentDAO {
 		properties.remove("topWood");
 		properties.put("numStrings", 5);
 		inventory.addInstrument("8900231", 2945.95, new InstrumentSpec(properties));
+	}
+
+	// 디비코드 작성
+	public List<Instrument> select() {
+		return new Inventory().getAllInstruments();
+	}
+
+	public List<Instrument> select(InstrumentSpec instrumentSpec) {
+		return new Inventory().getAllInstruments();
+	}
+
+	public void update(Instrument instrument) {
+
+	}
+
+	public void delete() {
+
+	}
+
+	public void insert(Instrument instrument) {
+
+		String serialNumber = instrument.getSerialNumber();
+		double price = instrument.getPrice();
+		InstrumentSpec spec = instrument.getSpec();
+
+		// try {
+		// stmt = connection.prepareStatement(
+		// "INSERT INTO
+		// INSTRUMENTS(serialNumber,price,instrumentType,builder,model,type,numStrings,topWood,backWood)"
+		// + " VALUES (?,?,?,?,?,?,?,?,?)"));
+		// stmt.setString(1, serialNumber);
+		// stmt.setString(2, price);
+		// stmt.setString(3, spec.get("instrumentType"));
+		// stmt.setString(4, spec.get("builder"));
+		// stmt.setString(5, spec.get("model"));
+		// stmt.setString(6, spec.get("type"));
+		// stmt.setString(7, spec.get("numStrings"));
+		// stmt.setString(8, spec.get("topWood"));
+		// stmt.setString(9, spec.get("backWood"));
+		// return stmt.executeUpdate();
+		// }
 	}
 
 }

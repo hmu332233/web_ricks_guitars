@@ -52,6 +52,23 @@ public class InstrumentSpec {
 	public String toHTML(){
 		return toString().replaceAll("(\r\n|\n)", "<br />");
 	}
+	
+	public String toSQL(){
+		String propertyNameList = "";
+		String valueList = "";
+		for (Iterator i = properties.keySet().iterator(); i.hasNext();) {
+			String propertyName = (String) i.next();
+			
+			propertyNameList += propertyName + ",";
+			valueList += properties.get(propertyName) + ",";
+					
+		}
+		
+		
+
+		
+		return "";
+	}
 
 	public void printProperties() {
 

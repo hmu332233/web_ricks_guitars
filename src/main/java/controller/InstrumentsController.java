@@ -47,9 +47,13 @@ public class InstrumentsController {
 	    if( !backWood.equals("Unspecified") )
 	    	properties.put("backWood", backWood);
 	    
+	    
+	    
 	    InstrumentSpec whatBryanLikes = new InstrumentSpec(properties);
 	    List matchingInstruments = inventory.search(whatBryanLikes);
 	    
+	    
+	    System.out.println(whatBryanLikes.toSQL());
 //	    for( Instrument instrument : (LinkedList<Instrument>)matchingInstruments ){
 //	    	instrument.printProperties();
 //	    }
