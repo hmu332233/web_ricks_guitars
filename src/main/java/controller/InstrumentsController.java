@@ -1,12 +1,15 @@
 package controller;
 
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +25,25 @@ import model.Inventory;
 @Controller
 public class InstrumentsController {
 	
+	InstrumentDAO instrumentDAO = new InstrumentDAO();
+	
+	@Autowired
+	private ServletContext context;
 	
 	@RequestMapping(value = "/instruments/search", method = RequestMethod.GET)
 	public ModelAndView search(	@RequestParam(value = "builder") String builder,
 								@RequestParam(value = "type") String type,
 								@RequestParam(value = "topWood") String topWood,
 								@RequestParam(value = "backWood") String backWood) {
-				
+		
+		instrumentDAO.setConnection((Connection)context.getAttribute("conn"));
+		try {
+			instrumentDAO.select();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		System.out.println(builder);
 		System.out.println(type);
 		System.out.println(topWood);

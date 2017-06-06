@@ -1,6 +1,9 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,8 +81,39 @@ public class InstrumentDAO {
 	}
 
 	// 디비코드 작성
-	public List<Instrument> select() {
-		return new Inventory().getAllInstruments();
+	public List<Instrument> select() throws Exception {
+		
+		Statement stmt = null;
+	    ResultSet rs = null;
+
+	    try {
+	      stmt = connection.createStatement();
+	      rs = stmt.executeQuery("SELECT * FROM INSTRUMENTS");
+
+	      ArrayList<Instrument> instruments = new ArrayList<Instrument>();
+//	      
+//	      while(rs.next()) {
+//	    	instruments.add(new Instrument()
+//	        .setNo(rs.getDouble("MNO"))
+//	        .setEmail(rs.getString("EMAIL"))
+//	        .setName(rs.getString("MNAME"))
+//	        .setPhoneNumber(rs.getString("TEL"))
+//	        .setCreatedDate(rs.getDate("CRE_DATE")) );
+//	      }
+	      
+	      while(rs.next()){
+	    	  System.out.println(rs.getString("serialNumber"));
+	      }
+
+	      return instruments;
+
+	    } catch (Exception e) {
+	      throw e;
+	    } finally {
+	      try {if (rs != null) rs.close();} catch(Exception e) {}
+	      try {if (stmt != null) stmt.close();} catch(Exception e) {}
+	    }
+		
 	}
 
 	public List<Instrument> select(InstrumentSpec instrumentSpec) {
