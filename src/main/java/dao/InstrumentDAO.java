@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,11 @@ import model.Type;
 import model.Wood;
 
 public class InstrumentDAO {
+	Connection connection;
+
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
 
 	public Inventory selectAll() {
 		Inventory inventory = new Inventory();
