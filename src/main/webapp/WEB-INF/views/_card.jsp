@@ -136,7 +136,7 @@ h5 {
 						</div>
 						<div class="card-footer">
 							<div class="d-flex justify-content-between">
-								<button class="btn btn-secondary float-right btn-sm" onclick="location.href='/instruments/1/edit';">edit</button>
+								<button class="btn btn-secondary float-right btn-sm" onclick="location.href='/instruments/${instrument.serialNumber}/edit';">edit</button>
 								<form action="/instruments/${instrument.serialNumber}" method="POST">
 									<input name="_method" type="hidden" value="DELETE" />
 									<input type="submit" class="btn btn-secondary float-right btn-sm" value="delete"></button>

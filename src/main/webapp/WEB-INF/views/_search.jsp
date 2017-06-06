@@ -5,26 +5,26 @@
 <section id="form">
 	<div class="container">
 		<form action="/instruments/search" method="GET">
-			<div class="row">
-				<div class="col-sm-6 col-lg-4">
-					<div class="form-group">
-						<label for="serialNumber">serial number</label> 
-						<input name="serialNumber" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0123456">
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-4">
-					<div class="form-group">
-						<label for="price">price</label> 
-						<input name="price" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="123.456">
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-4">
-					<div class="form-group">
-						<label for="model">model</label> 
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="MD-5">
-					</div>
-				</div>
-			</div>
+<!-- 			<div class="row"> -->
+<!-- 				<div class="col-sm-6 col-lg-4"> -->
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="serialNumber">serial number</label>  -->
+<!-- 						<input name="serialNumber" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0123456"> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-sm-6 col-lg-4"> -->
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="price">price</label>  -->
+<!-- 						<input name="price" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="123.456"> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-sm-6 col-lg-4"> -->
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="model">model</label>  -->
+<!-- 						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="MD-5"> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<div class="row">
 				<div class="form-group col-sm-6 col-lg-3">
 					<label for="buider">builder</label> <select class="form-control"
@@ -79,8 +79,11 @@
 					</select>
 				</div>
 			</div>
-
-			<button type="submit" class="btn btn-primary">Search</button>
+			
+			<div class="d-flex justify-content-center">
+				<button type="submit" class="btn btn-warning">Search</button>
+			</div>
+			
 		</form>
 	</div>
 </section>

@@ -88,10 +88,12 @@ public class InstrumentsController {
 	}
 	
 	@RequestMapping(value = "/instruments", method = RequestMethod.POST)
-	public ModelAndView processAddInstrument(	@RequestParam(value = "builder") String builder,
-								@RequestParam(value = "type") String type,
-								@RequestParam(value = "topWood") String topWood,
-								@RequestParam(value = "backWood") String backWood) {
+	public ModelAndView processAddInstrument(	@RequestParam(value = "serialNumber") String serialNumber,
+												@RequestParam(value = "model") String model,
+												@RequestParam(value = "builder") String builder,
+												@RequestParam(value = "type") String type,
+												@RequestParam(value = "topWood") String topWood,
+												@RequestParam(value = "backWood") String backWood) {
 		
 		System.out.println("생성되었습니다");
 		
