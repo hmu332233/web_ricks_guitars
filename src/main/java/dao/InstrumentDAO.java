@@ -91,20 +91,19 @@ public class InstrumentDAO {
 	      rs = stmt.executeQuery("SELECT * FROM INSTRUMENTS");
 
 	      ArrayList<Instrument> instruments = new ArrayList<Instrument>();
-//	      
-//	      while(rs.next()) {
-//	    	instruments.add(new Instrument()
-//	        .setNo(rs.getDouble("MNO"))
-//	        .setEmail(rs.getString("EMAIL"))
-//	        .setName(rs.getString("MNAME"))
-//	        .setPhoneNumber(rs.getString("TEL"))
-//	        .setCreatedDate(rs.getDate("CRE_DATE")) );
-//	      }
 	      
-	      while(rs.next()){
-	    	  System.out.println(rs.getString("serialNumber"));
+	      while(rs.next()) {
+	  		Map properties = new HashMap();
+			properties.put("instrumentType", rs.getString("instrumentType"));
+			properties.put("builder", rs.getString("builder"));
+			properties.put("model", rs.getString("model"));
+			properties.put("type", rs.getString("type"));
+			properties.put("numStrings", rs.getString("numStrings"));
+			properties.put("topWood", rs.getString("topWood"));
+			properties.put("backWood", rs.getString("backWood"));
+			instruments.add(new Instrument(rs.getString("serialNumber"), rs.getDouble("price"), new InstrumentSpec(properties)));
 	      }
-
+	      
 	      return instruments;
 
 	    } catch (Exception e) {

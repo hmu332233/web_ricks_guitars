@@ -85,9 +85,15 @@ public class InstrumentsController {
 		Inventory inventory = new InstrumentDAO().selectAll();
 //		inventory.printAllInstruments();
 		List<Instrument> instruments = inventory.getAllInstruments();
+		instrumentDAO.setConnection((Connection)context.getAttribute("conn"));
 		
 		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("instruments", instruments);
+		try {
+			mv.addObject("instruments", instrumentDAO.select());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return mv;
 	}
