@@ -21,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 import dao.InstrumentDAO;
 import model.Instrument;
 import model.InstrumentSpec;
-import model.Inventory;
 
 @Controller
 public class InstrumentsController {
@@ -35,13 +34,11 @@ public class InstrumentsController {
 	public ModelAndView search(@RequestParam Map<String,Object> properties) {
 		
 		LinkedList<String> removedPropertyNames = new LinkedList<String>();
-		for (Iterator i = properties.keySet().iterator(); i.hasNext();) {
-			String propertyName = (String) i.next();
-			if (properties.get(propertyName).toString().equals("Unspecified")) {
+		for(String propertyName : properties.keySet()){
+			if (properties.get(propertyName).toString().equals("Unspecified")) 
 				removedPropertyNames.add(propertyName);
-			}
 		}
-		
+
 		for(String propertyName : removedPropertyNames)
 			properties.remove(propertyName);
 		
