@@ -31,47 +31,12 @@ public class InstrumentsController {
 	private ServletContext context;
 
 	@RequestMapping(value = "/instruments/search", method = RequestMethod.GET)
-	public ModelAndView search(@RequestParam(value = "builder") String builder,
-			@RequestParam(value = "type") String type, @RequestParam(value = "topWood") String topWood,
-			@RequestParam(value = "backWood") String backWood) {
+	public ModelAndView search(@RequestParam Map<String,Object> properties) {
 
 		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
-		try {
-			instrumentDAO.select();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		System.out.println(builder);
-		System.out.println(type);
-		System.out.println(topWood);
-		System.out.println(backWood);
-
-		Inventory inventory = new InstrumentDAO().selectAll();
-
-		Map properties = new HashMap();
-
-		if (!builder.equals("Unspecified"))
-			properties.put("builder", builder);
-		if (!type.equals("Unspecified"))
-			properties.put("type", type);
-		if (!topWood.equals("Unspecified"))
-			properties.put("topWood", topWood);
-		if (!backWood.equals("Unspecified"))
-			properties.put("backWood", backWood);
-
-		InstrumentSpec whatBryanLikes = new InstrumentSpec(properties);
-		List matchingInstruments = inventory.search(whatBryanLikes);
-
-		System.out.println(whatBryanLikes.toSQL());
-		// for( Instrument instrument :
-		// (LinkedList<Instrument>)matchingInstruments ){
-		// instrument.printProperties();
-		// }
-
+		
 		ModelAndView mv = new ModelAndView("search");
-		mv.addObject("instruments", matchingInstruments);
+//		mv.addObject("instruments", matchingInstruments);
 
 		return mv;
 	}
@@ -86,7 +51,7 @@ public class InstrumentsController {
 
 		ModelAndView mv = new ModelAndView("index");
 		try {
-			mv.addObject("instruments", instrumentDAO.select());
+			mv.addObject("instruments", instrumentDAO.findAll());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
