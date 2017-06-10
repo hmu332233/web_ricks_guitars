@@ -131,7 +131,7 @@ public class InstrumentDAO {
 		return new Inventory().getAllInstruments();
 	}
 
-	public int update(Instrument instrument) throws Exception {
+	public int update(Instrument instrument){
 		
 		String serialNumber = instrument.getSerialNumber();
 		double price = instrument.getPrice();
@@ -156,9 +156,8 @@ public class InstrumentDAO {
 			stmt.setString(10, serialNumber);
 			return stmt.executeUpdate();
 
-		} catch (Exception e) {
-			throw e;
-
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} finally {
 			try {
 				if (stmt != null)
@@ -166,6 +165,7 @@ public class InstrumentDAO {
 			} catch (Exception e) {
 			}
 		}
+		return 0;
 	}
 
 	public void delete() {

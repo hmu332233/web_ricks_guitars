@@ -24,69 +24,66 @@ import model.Inventory;
 
 @Controller
 public class InstrumentsController {
-	
+
 	InstrumentDAO instrumentDAO = new InstrumentDAO();
-	
+
 	@Autowired
 	private ServletContext context;
-	
+
 	@RequestMapping(value = "/instruments/search", method = RequestMethod.GET)
-	public ModelAndView search(	@RequestParam(value = "builder") String builder,
-								@RequestParam(value = "type") String type,
-								@RequestParam(value = "topWood") String topWood,
-								@RequestParam(value = "backWood") String backWood) {
-		
-		instrumentDAO.setConnection((Connection)context.getAttribute("conn"));
+	public ModelAndView search(@RequestParam(value = "builder") String builder,
+			@RequestParam(value = "type") String type, @RequestParam(value = "topWood") String topWood,
+			@RequestParam(value = "backWood") String backWood) {
+
+		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
 		try {
 			instrumentDAO.select();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		System.out.println(builder);
 		System.out.println(type);
 		System.out.println(topWood);
 		System.out.println(backWood);
-		
+
 		Inventory inventory = new InstrumentDAO().selectAll();
 
-	    Map properties = new HashMap();
-	    
-	    if( !builder.equals("Unspecified") )
-	    	properties.put("builder", builder);
-	    if( !type.equals("Unspecified") )
-	    	properties.put("type", type);
-	    if( !topWood.equals("Unspecified") )
-	    	properties.put("topWood", topWood);
-	    if( !backWood.equals("Unspecified") )
-	    	properties.put("backWood", backWood);
-	    
-	    
-	    
-	    InstrumentSpec whatBryanLikes = new InstrumentSpec(properties);
-	    List matchingInstruments = inventory.search(whatBryanLikes);
-	    
-	    
-	    System.out.println(whatBryanLikes.toSQL());
-//	    for( Instrument instrument : (LinkedList<Instrument>)matchingInstruments ){
-//	    	instrument.printProperties();
-//	    }
-		
+		Map properties = new HashMap();
+
+		if (!builder.equals("Unspecified"))
+			properties.put("builder", builder);
+		if (!type.equals("Unspecified"))
+			properties.put("type", type);
+		if (!topWood.equals("Unspecified"))
+			properties.put("topWood", topWood);
+		if (!backWood.equals("Unspecified"))
+			properties.put("backWood", backWood);
+
+		InstrumentSpec whatBryanLikes = new InstrumentSpec(properties);
+		List matchingInstruments = inventory.search(whatBryanLikes);
+
+		System.out.println(whatBryanLikes.toSQL());
+		// for( Instrument instrument :
+		// (LinkedList<Instrument>)matchingInstruments ){
+		// instrument.printProperties();
+		// }
+
 		ModelAndView mv = new ModelAndView("search");
 		mv.addObject("instruments", matchingInstruments);
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/instruments", method = RequestMethod.GET)
 	public ModelAndView viewIndexPage() {
-		
+
 		Inventory inventory = new InstrumentDAO().selectAll();
-//		inventory.printAllInstruments();
+		// inventory.printAllInstruments();
 		List<Instrument> instruments = inventory.getAllInstruments();
-		instrumentDAO.setConnection((Connection)context.getAttribute("conn"));
-		
+		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
+
 		ModelAndView mv = new ModelAndView("index");
 		try {
 			mv.addObject("instruments", instrumentDAO.select());
@@ -94,68 +91,62 @@ public class InstrumentsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/instruments/{serialNumber}/edit", method = RequestMethod.GET)
 	public ModelAndView viewEditPage(@PathVariable(value = "serialNumber") String serialNumber) {
-		
+
 		System.out.println(serialNumber);
-		
+
 		ModelAndView mv = new ModelAndView("edit");
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/instruments/new", method = RequestMethod.GET)
 	public String viewNewPage() {
 		return "new";
 	}
-	
+
 	@RequestMapping(value = "/instruments", method = RequestMethod.POST)
 	public ModelAndView processAddInstrument(	@RequestParam(value = "serialNumber") String serialNumber,
 												@RequestParam(value = "price") double price,
-												@RequestParam(value = "model") String model,
-												@RequestParam(value = "builder") String builder,
-												@RequestParam(value = "type") String type,
-												@RequestParam(value = "topWood") String topWood,
-												@RequestParam(value = "backWood") String backWood,
-												@RequestParam(value = "instrumentType") String instrumentType,
-												@RequestParam(value = "numStrings") String numStrings) {
-		
-		//double 형 타입 안시켜서 넘어오면 버그있음 고칠 것
-		Map properties = new HashMap();
-		properties.put("instrumentType", instrumentType);
-		properties.put("builder", builder);
-		properties.put("model", model);
-		properties.put("type", type);
-		properties.put("numStrings", numStrings);
-		properties.put("topWood", topWood);
-		properties.put("backWood", backWood);
+												@RequestParam Map<String,Object> properties) {
+
+		// double 형 타입 안시켜서 넘어오면 버그있음 고칠 것
 		Instrument instrument = new Instrument(serialNumber, price, new InstrumentSpec(properties));
-		
-		instrumentDAO.setConnection((Connection)context.getAttribute("conn"));
+
+		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
 		instrumentDAO.insert(instrument);
-		
-		System.out.println(instrumentType + " 생성되었습니다");
-		
+
+		System.out.println(serialNumber + " 생성되었습니다");
+
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
 	}
-	
-	@RequestMapping(value = "/instruments/{serialNumber}", method = RequestMethod.PUT)
-	public String processEditInstrument(	@PathVariable(value = "serialNumber") String serialNumber) {
 
+	@RequestMapping(value = "/instruments/{serialNumber}", method = RequestMethod.PUT)
+	public String processEditInstrument(	@PathVariable(value = "serialNumber") String serialNumber,
+											@RequestParam(value = "price") double price,
+											@RequestParam Map<String,Object> properties) {
+
+		// double 형 타입 안시켜서 넘어오면 버그있음 고칠 것
+		Instrument instrument = new Instrument(serialNumber, price, new InstrumentSpec(properties));
+
+		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
+		instrumentDAO.update(instrument);
+		
 		System.out.println(serialNumber + "가 수정되었습니다");
 		
 		return "redirect:/instruments";
 	}
-	
+
 	@RequestMapping(value = "/instruments/{serialNumber}", method = RequestMethod.DELETE)
 	public String processDeleteInstrument(@PathVariable(value = "serialNumber") String serialNumber) {
-		
+
 		System.out.println(serialNumber + "가 삭제되었습니다");
-		
+
 		return "redirect:/instruments";
 	}
 }
