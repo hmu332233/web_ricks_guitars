@@ -2,6 +2,7 @@ package controller;
 
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -32,22 +33,31 @@ public class InstrumentsController {
 
 	@RequestMapping(value = "/instruments/search", method = RequestMethod.GET)
 	public ModelAndView search(@RequestParam Map<String,Object> properties) {
+		
+		LinkedList<String> removedPropertyNames = new LinkedList<String>();
+		for (Iterator i = properties.keySet().iterator(); i.hasNext();) {
+			String propertyName = (String) i.next();
+			if (properties.get(propertyName).toString().equals("Unspecified")) {
+				removedPropertyNames.add(propertyName);
+			}
+		}
+		
+		for(String propertyName : removedPropertyNames)
+			properties.remove(propertyName);
+		
+		new InstrumentSpec(properties).printProperties();
 
 		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
+		List<Instrument> matchingInstruments = instrumentDAO.findByInstrumentSpec(new InstrumentSpec(properties));
 		
 		ModelAndView mv = new ModelAndView("search");
-//		mv.addObject("instruments", matchingInstruments);
+		mv.addObject("instruments", matchingInstruments);
 
 		return mv;
 	}
 
 	@RequestMapping(value = "/instruments", method = RequestMethod.GET)
 	public ModelAndView viewIndexPage() {
-
-		Inventory inventory = new InstrumentDAO().selectAll();
-		// inventory.printAllInstruments();
-		List<Instrument> instruments = inventory.getAllInstruments();
-		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
 
 		ModelAndView mv = new ModelAndView("index");
 		try {
@@ -63,9 +73,11 @@ public class InstrumentsController {
 	@RequestMapping(value = "/instruments/{serialNumber}/edit", method = RequestMethod.GET)
 	public ModelAndView viewEditPage(@PathVariable(value = "serialNumber") String serialNumber) {
 
-		System.out.println(serialNumber);
+		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
+		Instrument instrument = instrumentDAO.findOne(serialNumber);
 
 		ModelAndView mv = new ModelAndView("edit");
+		mv.addObject("instrument", instrument);
 		return mv;
 	}
 
@@ -111,6 +123,9 @@ public class InstrumentsController {
 	public String processDeleteInstrument(@PathVariable(value = "serialNumber") String serialNumber) {
 
 		System.out.println(serialNumber + "가 삭제되었습니다");
+		
+		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
+		instrumentDAO.delete(serialNumber);
 
 		return "redirect:/instruments";
 	}

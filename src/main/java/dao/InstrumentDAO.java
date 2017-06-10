@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,61 +27,72 @@ public class InstrumentDAO {
 		this.connection = connection;
 	}
 
-	public List<Instrument> select(InstrumentSpec instrumentSpec) {
-
-		return new Inventory().getAllInstruments();
-	}
-
 	public Instrument findOne(String serialNumber) {
 
-		return null;
+	    try {
+	      Statement stmt = connection.createStatement();
+	      ResultSet rs = stmt.executeQuery(
+	          "SELECT * FROM INSTRUMENTS WHERE serialNumber='"+serialNumber+"'");    
+	      
+	      Instrument instrument;
+	      
+	      if (rs.next()) {
+	    	  instrument = getInstrumentFromResultSet(rs);
+	      } else {
+	          instrument= null;
+	      }
+	      
+	      rs.close();
+		  stmt.close();
+
+		  return instrument;
+		  
+	    } catch (SQLException e) {
+	    	e.printStackTrace();
+	    }
+	    
+	    return null;
 	}
 
-	// 디비코드 작성
 	public List<Instrument> findAll() {
 
-		Statement stmt = null;
-		ResultSet rs = null;
-
 		try {
-			stmt = connection.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM INSTRUMENTS");
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM INSTRUMENTS");
 
 			ArrayList<Instrument> instruments = new ArrayList<Instrument>();
 
 			while (rs.next()) {
-				Map properties = new HashMap();
-				properties.put("instrumentType", rs.getString("instrumentType"));
-				properties.put("builder", rs.getString("builder"));
-				properties.put("model", rs.getString("model"));
-				properties.put("type", rs.getString("type"));
-				properties.put("numStrings", rs.getString("numStrings"));
-				properties.put("topWood", rs.getString("topWood"));
-				properties.put("backWood", rs.getString("backWood"));
-				instruments.add(new Instrument(rs.getString("serialNumber"), rs.getDouble("price"),
-						new InstrumentSpec(properties)));
+				Instrument instrument = getInstrumentFromResultSet(rs);
+				instruments.add(instrument);
 			}
 
+			rs.close();
+			stmt.close();
+			
 			return instruments;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-			} catch (Exception e) {
-			}
-			try {
-				if (stmt != null)
-					stmt.close();
-			} catch (Exception e) {
-			}
 		}
+
 		return null;
 	}
+	
+	public List<Instrument> findByInstrumentSpec(InstrumentSpec searchSpec) {
+	
+		List<Instrument> instruments = findAll();
+		
+		List matchingInstruments = new LinkedList();
+		for(Instrument instrument : instruments ) {
+			if (instrument.getSpec().matches(searchSpec))
+				matchingInstruments.add(instrument);
+		}
+	
+		return matchingInstruments;
+	}
 
-	public int update(Instrument instrument) {
+	public void update(Instrument instrument) {
 
 		String serialNumber = instrument.getSerialNumber();
 		double price = instrument.getPrice();
@@ -100,7 +113,7 @@ public class InstrumentDAO {
 			stmt.setString(8, (String) spec.getProperty("topWood"));
 			stmt.setString(9, (String) spec.getProperty("backWood"));
 			stmt.setString(10, serialNumber);
-			return stmt.executeUpdate();
+			stmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,11 +124,27 @@ public class InstrumentDAO {
 			} catch (Exception e) {
 			}
 		}
-		return 0;
 	}
 
-	public void delete() {
+	public void delete(String serialNumber) {
 
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection
+					.prepareStatement( "DELETE FROM INSTRUMENTS"
+									+ " WHERE serialNumber='"+serialNumber+"'");
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (Exception e) {
+			}
+		}
 	}
 
 	public int insert(Instrument instrument) {
@@ -153,4 +182,18 @@ public class InstrumentDAO {
 		return 0;
 	}
 
+	
+	private Instrument getInstrumentFromResultSet(ResultSet rs) throws SQLException{
+
+		Map properties = new HashMap();
+		properties.put("instrumentType", rs.getString("instrumentType"));
+		properties.put("builder", rs.getString("builder"));
+		properties.put("model", rs.getString("model"));
+		properties.put("type", rs.getString("type"));
+		properties.put("numStrings", rs.getString("numStrings"));
+		properties.put("topWood", rs.getString("topWood"));
+		properties.put("backWood", rs.getString("backWood"));
+		
+		return new Instrument(rs.getString("serialNumber"), rs.getDouble("price"),new InstrumentSpec(properties));
+	}
 }
