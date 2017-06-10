@@ -114,13 +114,30 @@ public class InstrumentsController {
 	
 	@RequestMapping(value = "/instruments", method = RequestMethod.POST)
 	public ModelAndView processAddInstrument(	@RequestParam(value = "serialNumber") String serialNumber,
+												@RequestParam(value = "price") double price,
 												@RequestParam(value = "model") String model,
 												@RequestParam(value = "builder") String builder,
 												@RequestParam(value = "type") String type,
 												@RequestParam(value = "topWood") String topWood,
-												@RequestParam(value = "backWood") String backWood) {
+												@RequestParam(value = "backWood") String backWood,
+												@RequestParam(value = "instrumentType") String instrumentType,
+												@RequestParam(value = "numStrings") String numStrings) {
 		
-		System.out.println("생성되었습니다");
+		//double 형 타입 안시켜서 넘어오면 버그있음 고칠 것
+		Map properties = new HashMap();
+		properties.put("instrumentType", instrumentType);
+		properties.put("builder", builder);
+		properties.put("model", model);
+		properties.put("type", type);
+		properties.put("numStrings", numStrings);
+		properties.put("topWood", topWood);
+		properties.put("backWood", backWood);
+		Instrument instrument = new Instrument(serialNumber, price, new InstrumentSpec(properties));
+		
+		instrumentDAO.setConnection((Connection)context.getAttribute("conn"));
+		instrumentDAO.insert(instrument);
+		
+		System.out.println(instrumentType + " 생성되었습니다");
 		
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
