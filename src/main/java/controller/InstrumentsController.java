@@ -57,13 +57,10 @@ public class InstrumentsController {
 	public ModelAndView viewIndexPage() {
 
 		ModelAndView mv = new ModelAndView("index");
-		try {
-			mv.addObject("instruments", instrumentDAO.findAll());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		
+		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
+		mv.addObject("instruments", instrumentDAO.findAll());
+		
 		return mv;
 	}
 
@@ -84,7 +81,7 @@ public class InstrumentsController {
 	}
 
 	@RequestMapping(value = "/instruments", method = RequestMethod.POST)
-	public ModelAndView processAddInstrument(	@RequestParam(value = "serialNumber") String serialNumber,
+	public String processAddInstrument(	@RequestParam(value = "serialNumber") String serialNumber,
 												@RequestParam(value = "price") double price,
 												@RequestParam Map<String,Object> properties) {
 
@@ -96,8 +93,7 @@ public class InstrumentsController {
 
 		System.out.println(serialNumber + " 생성되었습니다");
 
-		ModelAndView mv = new ModelAndView("index");
-		return mv;
+		return "redirect:/instruments";
 	}
 
 	@RequestMapping(value = "/instruments/{serialNumber}", method = RequestMethod.PUT)
