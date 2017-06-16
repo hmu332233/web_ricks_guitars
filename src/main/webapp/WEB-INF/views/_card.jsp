@@ -4,19 +4,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
-html {
+#card {
 	font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	font-size: 14px;
 }
 
-h5 {
+#card h5 {
 	font-size: 1.28571429em;
 	font-weight: 700;
 	line-height: 1.2857em;
 	margin: 0;
 }
 
-.card {
+#card .card {
 	font-size: 1em;
 	overflow: hidden;
 	padding: 0;
@@ -25,7 +25,7 @@ h5 {
 	box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
 }
 
-.card-block {
+#card .card-block {
 	font-size: 1em;
 	position: relative;
 	margin: 0;
@@ -35,25 +35,25 @@ h5 {
 	box-shadow: none;
 }
 
-.card-img-top {
+#card .card-img-top {
 	display: block;
 	width: 100%;
 	height: auto;
 }
 
-.card-title {
+#card .card-title {
 	font-size: 1.28571429em;
 	font-weight: 700;
 	line-height: 1.2857em;
 }
 
-.card-text {
+#card .card-text {
 	clear: both;
 	margin-top: .5em;
 	color: rgba(0, 0, 0, .68);
 }
 
-.card-footer {
+#card .card-footer {
 	font-size: 1em;
 	position: static;
 	top: 0;
@@ -65,57 +65,25 @@ h5 {
 	background: #fff;
 }
 
-.card-inverse .btn {
+#card .card-inverse .btn {
 	border: 1px solid rgba(0, 0, 0, .05);
 }
 
-.profile {
-	position: absolute;
-	top: -12px;
-	display: inline-block;
-	overflow: hidden;
-	box-sizing: border-box;
-	width: 25px;
-	height: 25px;
-	margin: 0;
-	border: 1px solid #fff;
-	border-radius: 50%;
-}
-
-.profile-avatar {
-	display: block;
-	width: 100%;
-	height: auto;
-	border-radius: 50%;
-}
-
-.profile-inline {
-	position: relative;
-	top: 0;
-	display: inline-block;
-}
-
-.profile-inline ~ .card-title {
-	display: inline-block;
-	margin-left: 4px;
-	vertical-align: top;
-}
-
-.text-bold {
+#card .text-bold {
 	font-weight: 700;
 }
 
-.meta {
+#card .meta {
 	font-size: 1em;
 	color: rgba(0, 0, 0, .4);
 }
 
-.meta a {
+#card .meta a {
 	text-decoration: none;
 	color: rgba(0, 0, 0, .4);
 }
 
-.meta a:hover {
+#card .meta a:hover {
 	color: rgba(0, 0, 0, .87);
 }
 </style>

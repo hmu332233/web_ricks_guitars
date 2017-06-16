@@ -1,31 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
 <section id="form">
 	<div class="container">
 		<form action="/instruments/search" method="GET">
-<!-- 			<div class="row"> -->
-<!-- 				<div class="col-sm-6 col-lg-4"> -->
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="serialNumber">serial number</label>  -->
-<!-- 						<input name="serialNumber" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0123456"> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-sm-6 col-lg-4"> -->
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="price">price</label>  -->
-<!-- 						<input name="price" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="123.456"> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-sm-6 col-lg-4"> -->
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="model">model</label>  -->
-<!-- 						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="MD-5"> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
 			<div class="row">
+				<div class="form-group col-sm-6 col-lg-3">
+					<label for="element">instrumentType</label> <select
+						class="form-control" id="exampleSelect1" name="instrumentType">
+						<option>Unspecified</option>
+						<option>Guitar</option>
+						<option>Banjo</option>
+						<option>Dobro</option>
+						<option>Fiddle</option>
+						<option>Bass</option>
+						<option>Mandolin</option>
+					</select>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-sm-6 col-lg-3">
+					<div class="form-group">
+						<label for="serialNumber">serial number</label> <input
+							name="serialNumber" type="text" class="form-control"
+							id="exampleInputEmail1" aria-describedby="emailHelp"
+							placeholder="0123456">
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="form-group">
+						<label for="price">price</label> <input name="price" type="text"
+							class="form-control" id="exampleInputEmail1"
+							aria-describedby="emailHelp" placeholder="123.456">
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="form-group">
+						<label for="model">model</label> <input name="model" type="text"
+							class="form-control" id="exampleInputEmail1"
+							aria-describedby="emailHelp" placeholder="MD-5">
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="form-group">
+						<label for="model">numStrings</label> <input name="numStrings"
+							type="text" class="form-control" id="exampleInputEmail1"
+							aria-describedby="emailHelp" placeholder="6">
+					</div>
+				</div>
+			</div>
+
+			<div class="row mt-5">
 				<div class="form-group col-sm-6 col-lg-3">
 					<label for="buider">builder</label> <select class="form-control"
 						id="exampleSelect1" name="builder">
@@ -79,11 +104,11 @@
 					</select>
 				</div>
 			</div>
-			
+
 			<div class="d-flex justify-content-center">
 				<button type="submit" class="btn btn-warning">Search</button>
 			</div>
-			
+
 		</form>
 	</div>
 </section>

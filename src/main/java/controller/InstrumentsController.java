@@ -35,7 +35,7 @@ public class InstrumentsController {
 		
 		LinkedList<String> removedPropertyNames = new LinkedList<String>();
 		for(String propertyName : properties.keySet()){
-			if (properties.get(propertyName).toString().equals("Unspecified")) 
+			if (properties.get(propertyName).toString().equals("Unspecified") || properties.get(propertyName).toString().equals("")) 
 				removedPropertyNames.add(propertyName);
 		}
 
