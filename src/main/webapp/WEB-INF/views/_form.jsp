@@ -15,9 +15,8 @@
 					<label for="element">instrumentType</label> <select
 						class="form-control" id="instrumentType_select"
 						name="instrumentType">
-						<option>Unspecified</option>
-						<option>Mandolin</option>
 						<option>Guitar</option>
+						<option>Mandolin</option>
 						<option>Banjo</option>
 						<option>Dobro</option>
 						<option>Fiddle</option>

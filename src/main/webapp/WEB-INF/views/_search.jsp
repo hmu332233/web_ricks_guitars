@@ -9,8 +9,8 @@
 					<label for="element">instrumentType</label> <select
 						class="form-control" id="instrumentType_select" name="instrumentType">
 						<option>Unspecified</option>
-						<option>Mandolin</option>
 						<option>Guitar</option>
+						<option>Mandolin</option>
 						<option>Banjo</option>
 						<option>Dobro</option>
 						<option>Fiddle</option>
@@ -25,13 +25,6 @@
 							name="serialNumber" type="text" class="form-control"
 							id="exampleInputEmail1" aria-describedby="emailHelp"
 							placeholder="0123456">
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-3">
-					<div class="form-group">
-						<label for="price">price</label> <input name="price" type="text"
-							class="form-control" id="exampleInputEmail1"
-							aria-describedby="emailHelp" placeholder="123.456">
 					</div>
 				</div>
 				<div class="col-sm-6 col-lg-3">
