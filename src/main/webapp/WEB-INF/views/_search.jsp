@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="form-group col-sm-6 col-lg-3">
 					<label for="element">instrumentType</label> <select
-						class="form-control" id="exampleSelect1" name="instrumentType">
+						class="form-control" id="instrumentSpec_select" name="instrumentType">
 						<option>Unspecified</option>
 						<option>Guitar</option>
 						<option>Banjo</option>
