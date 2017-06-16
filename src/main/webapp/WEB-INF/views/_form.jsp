@@ -11,10 +11,17 @@
 				<input type="hidden" name="_method" value="PUT" />
 			</c:if>
 			<div class="row">
-				<div class="form-group col-sm-6 col-lg-3">
+				<div class="form-group col-sm-6 col-lg-3" id="instrumentType">
 					<label for="element">instrumentType</label> <select
-						class="form-control" id="exampleSelect1" name="instrumentType">
+						class="form-control" id="instrumentType_select"
+						name="instrumentType">
+						<option>Unspecified</option>
+						<option>Mandolin</option>
 						<option>Guitar</option>
+						<option>Banjo</option>
+						<option>Dobro</option>
+						<option>Fiddle</option>
+						<option>Bass</option>
 					</select>
 				</div>
 			</div>
@@ -41,7 +48,7 @@
 							aria-describedby="emailHelp" placeholder="MD-5">
 					</div>
 				</div>
-				<div class="col-sm-6 col-lg-3">
+				<div class="col-sm-6 col-lg-3" id="numStrings">
 					<div class="form-group">
 						<label for="model">numStrings</label> <input name="numStrings"
 							type="text" class="form-control" id="exampleInputEmail1"
@@ -51,7 +58,7 @@
 			</div>
 
 			<div class="row mt-5">
-				<div class="form-group col-sm-6 col-lg-3">
+				<div class="form-group col-sm-6 col-lg-3" id="builder">
 					<label for="buider">builder</label> <select class="form-control"
 						id="exampleSelect1" name="builder">
 						<option>Unspecified</option>
@@ -64,7 +71,7 @@
 						<option>PRS</option>
 					</select>
 				</div>
-				<div class="form-group col-sm-6 col-lg-3">
+				<div class="form-group col-sm-6 col-lg-3" id="model">
 					<label for="model">type</label> <select class="form-control"
 						id="exampleSelect1" name="type">
 						<option>Unspecified</option>
@@ -73,7 +80,7 @@
 					</select>
 				</div>
 
-				<div class="form-group col-sm-6 col-lg-3">
+				<div class="form-group col-sm-6 col-lg-3" id="topWood">
 					<label for="element">topWood</label> <select class="form-control"
 						id="exampleSelect1" name="topWood">
 						<option>Unspecified</option>
@@ -88,7 +95,7 @@
 						<option>Sitka</option>
 					</select>
 				</div>
-				<div class="form-group col-sm-6 col-lg-3">
+				<div class="form-group col-sm-6 col-lg-3" id="backWood">
 					<label for="element">backWood</label> <select class="form-control"
 						id="exampleSelect1" name="backWood">
 						<option>Unspecified</option>
