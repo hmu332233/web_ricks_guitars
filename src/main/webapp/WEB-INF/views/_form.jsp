@@ -112,7 +112,7 @@
 			</div>
 
 			<div class="d-flex justify-content-center">
-				<button type="submit" class="btn btn-warning" id="btn-submit">Search</button>
+				<button type="submit" class="btn btn-warning" id="btn-submit">Add</button>
 			</div>
 		</form>
 	</div>
