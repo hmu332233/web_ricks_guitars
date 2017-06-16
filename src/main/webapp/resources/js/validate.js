@@ -6,7 +6,7 @@ function isEnglish(text)
 
 function isNatural(text)
 {
-	var regex = /^[1-9]\d*$/;
+	var regex = /^([1-9]\d*)?$/;
 	return regex.test(text);
 }
 

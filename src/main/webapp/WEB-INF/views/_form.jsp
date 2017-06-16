@@ -29,28 +29,28 @@
 					<div class="form-group">
 						<label for="serialNumber">serial number</label> <input
 							name="serialNumber" type="text" class="form-control"
-							id="exampleInputEmail1" aria-describedby="emailHelp"
+							id="serialNumber_input" aria-describedby="emailHelp"
 							placeholder="0123456">
 					</div>
 				</div>
 				<div class="col-sm-6 col-lg-3">
 					<div class="form-group">
 						<label for="price">price</label> <input name="price" type="text"
-							class="form-control" id="exampleInputEmail1"
-							aria-describedby="emailHelp" placeholder="123.456">
+							class="form-control"
+							aria-describedby="emailHelp" placeholder="123.456" id="price_input">
 					</div>
 				</div>
 				<div class="col-sm-6 col-lg-3">
 					<div class="form-group">
 						<label for="model">model</label> <input name="model" type="text"
-							class="form-control" id="exampleInputEmail1"
-							aria-describedby="emailHelp" placeholder="MD-5">
+							class="form-control"
+							aria-describedby="emailHelp" placeholder="MD-5" id="model_input">
 					</div>
 				</div>
 				<div class="col-sm-6 col-lg-3" id="numStrings">
 					<div class="form-group">
 						<label for="model">numStrings</label> <input name="numStrings"
-							type="text" class="form-control" id="exampleInputEmail1"
+							type="text" class="form-control" id="numStrings_input"
 							aria-describedby="emailHelp" placeholder="6">
 					</div>
 				</div>
@@ -59,7 +59,7 @@
 			<div class="row mt-5">
 				<div class="form-group col-sm-6 col-lg-3" id="builder">
 					<label for="buider">builder</label> <select class="form-control"
-						id="exampleSelect1" name="builder">
+						id="builder_select" name="builder">
 						<option>Unspecified</option>
 						<option>Fender</option>
 						<option>Martin</option>
@@ -72,7 +72,7 @@
 				</div>
 				<div class="form-group col-sm-6 col-lg-3" id="model">
 					<label for="model">type</label> <select class="form-control"
-						id="exampleSelect1" name="type">
+						id="type_select" name="type">
 						<option>Unspecified</option>
 						<option>acoustic</option>
 						<option>electric</option>
@@ -81,7 +81,7 @@
 
 				<div class="form-group col-sm-6 col-lg-3" id="topWood">
 					<label for="element">topWood</label> <select class="form-control"
-						id="exampleSelect1" name="topWood">
+						id="topWood_select" name="topWood">
 						<option>Unspecified</option>
 						<option>Indian Rosewood</option>
 						<option>Brazilian Rosewood</option>
@@ -96,7 +96,7 @@
 				</div>
 				<div class="form-group col-sm-6 col-lg-3" id="backWood">
 					<label for="element">backWood</label> <select class="form-control"
-						id="exampleSelect1" name="backWood">
+						id="backWood_select" name="backWood">
 						<option>Unspecified</option>
 						<option>Indian Rosewood</option>
 						<option>Brazilian Rosewood</option>
@@ -112,7 +112,7 @@
 			</div>
 
 			<div class="d-flex justify-content-center">
-				<button type="submit" class="btn btn-warning">Search</button>
+				<button type="submit" class="btn btn-warning" id="btn-submit">Search</button>
 			</div>
 		</form>
 	</div>

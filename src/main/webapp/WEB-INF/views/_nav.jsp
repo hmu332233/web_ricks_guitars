@@ -9,6 +9,9 @@
 	  <a class="navbar-brand" href="/instruments">Inventory</a>
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav ml-auto">
+	    	<li class="nav-item">
+	        <a class="nav-link" href="/instruments">악기 목록</a>
+	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="/instruments/search">악기 검색</a>
 	      </li>
