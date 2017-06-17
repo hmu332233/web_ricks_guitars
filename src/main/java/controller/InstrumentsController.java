@@ -31,7 +31,7 @@ public class InstrumentsController {
 	private ServletContext context;
 
 	@RequestMapping(value = "/instruments/search", method = RequestMethod.GET)
-	public ModelAndView search(@RequestParam Map<String,Object> properties) {
+	public ModelAndView viewSearchPage(@RequestParam Map<String,Object> properties) {
 		
 		LinkedList<String> removedPropertyNames = new LinkedList<String>();
 		for(String propertyName : properties.keySet()){
@@ -82,10 +82,10 @@ public class InstrumentsController {
 
 	@RequestMapping(value = "/instruments", method = RequestMethod.POST)
 	public String processAddInstrument(	@RequestParam(value = "serialNumber") String serialNumber,
-												@RequestParam(value = "price") double price,
-												@RequestParam Map<String,Object> properties) {
+										@RequestParam(value = "price") double price,
+										@RequestParam Map<String,Object> properties) {
 
-		// double 형 타입 안시켜서 넘어오면 버그있음 고칠 것
+		
 		Instrument instrument = new Instrument(serialNumber, price, new InstrumentSpec(properties));
 
 		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));
@@ -101,7 +101,7 @@ public class InstrumentsController {
 											@RequestParam(value = "price") double price,
 											@RequestParam Map<String,Object> properties) {
 
-		// double 형 타입 안시켜서 넘어오면 버그있음 고칠 것
+		
 		Instrument instrument = new Instrument(serialNumber, price, new InstrumentSpec(properties));
 
 		instrumentDAO.setConnection((Connection) context.getAttribute("conn"));

@@ -12,12 +12,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import model.Builder;
 import model.Instrument;
 import model.InstrumentSpec;
-import model.InstrumentType;
-import model.Type;
-import model.Wood;
+
 
 public class InstrumentDAO {
 	Connection connection;

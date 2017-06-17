@@ -13,6 +13,7 @@
   
   	<!-- Custom CSS -->
 		<link href="/resources/css/custom.css" rel="stylesheet">
+		<link href="/resources/css/card.css" rel="stylesheet">
   </head>
   <body>
 		
