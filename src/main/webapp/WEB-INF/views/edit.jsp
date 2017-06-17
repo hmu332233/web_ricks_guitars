@@ -13,21 +13,26 @@
   
   	<!-- Custom CSS -->
 		<link href="/resources/css/custom.css" rel="stylesheet">
-		<link href="/resources/css/card.css" rel="stylesheet">
   </head>
   <body>
 		
 		<!-- nav section -->
 		<jsp:include page="_nav.jsp"/>
-    
-   	<!-- card section -->
-   	<div class="mt-5 mb-3">
-		<jsp:include page="_card.jsp" flush="false"/>
+		
+		<!-- search section -->
+		<div class="mt-5 mb-3">
+		<jsp:include page="_form.jsp" flush="false">
+			<jsp:param name="action" value="/instruments/${serialNumber}" />
+			<jsp:param name="method" value="PUT"/>
+		</jsp:include>
 		</div>
     
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  	<!-- validate js -->
+		<script type="text/javascript" src="/resources/js/validate.js"></script>
+		<script type="text/javascript" src="/resources/js/selector.js"></script>
   </body>
 </html>

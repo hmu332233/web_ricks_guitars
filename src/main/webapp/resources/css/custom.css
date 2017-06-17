@@ -1,0 +1,15 @@
+@import 
+url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+*{
+  font-family: 'Jeju Gothic', serif;
+}
+
+body{
+	background-color: #f9f9fb;
+}
+
+
+.navbar{
+	background-color: white;
+}
